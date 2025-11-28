@@ -24,6 +24,7 @@ h2 {
 h3 {
     font-size: 30px;
     margin: 0px;
+        font-style: italic;
 }
 
 section {
@@ -77,6 +78,7 @@ nav ul li {
 nav ul li a {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
 }
 
 .login {
@@ -178,10 +180,10 @@ section.tramites article {
 }
 
 section.tramites .title {
-    margin-top: 80px;
+    margin-top: 70px;
     text-align: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 section.tramites .container {
@@ -193,9 +195,56 @@ section.tramites .container {
 section.tramites .container .col {
     flex: 1;
     padding: 20px;
-    font-size: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+section.tramites .container .col h3{
+    font-size: 22px;
+
 }
 
 section.tramites .container .col h2 {
-    font-size: 30px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+section.tramites a {
+    color: #273F4F;
+    text-decoration: none;
+    text-align: center;
+    background: #FE7743;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.2s ease;
+    border: 2px solid transparent;
+}
+
+/* Sobre nosotros */
+
+section.sobrenosotros article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: #D7D7D7;
+}
+
+section.sobrenosotros .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+section.sobrenosotros .container .col {
+    flex: 1;
+    text-align: center;
+    border-radius: 50px;
+    background: #6797b1;
+    padding: 70px 0px;
 }
