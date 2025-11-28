@@ -54,9 +54,10 @@ nav {
     top: 0;
     left: 0;
     font-size: 20px;
-    /*background-color: #273f4f;
+    background-color: #273f4fe3;
     border-top-left-radius: 50px;
-    border-top-right-radius: 50px;*/
+    border-top-right-radius: 50px;
+    z-index: 1000;
 }
 
 nav ul {
@@ -97,7 +98,7 @@ section.main {
     display: flex;
     flex-direction: column;
     background: #6797b1;
-    border-radius: 100px;
+    border-radius: 50px;
     padding: 50px;
 }
 
@@ -125,4 +126,76 @@ section.main article .buttons {
     display: flex;
     align-items: center;
     gap: 200px;
+}
+
+/*Informacion*/
+
+section.informacion article{
+    display: flex;
+    width: 100%;
+    
+}
+
+section.informacion figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 40%;
+    margin: 0;
+    background-color: #D7D7D7;
+    border-radius: 50px;
+}
+
+section.informacion figure img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+section.informacion .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+    background: #FE7743;
+    padding: 4vw;
+    padding-bottom: 25px;
+    border-radius: 50px;
+    font-size: 22px;
+}
+
+/* Tramites */
+
+section.tramites article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px;
+    background: #273F4F;
+    color: #D7D7D7;
+    border-radius: 50px;
+}
+
+section.tramites .title {
+    margin-top: 80px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+section.tramites .container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+section.tramites .container .col {
+    flex: 1;
+    padding: 20px;
+    font-size: 20px;
+}
+
+section.tramites .container .col h2 {
+    font-size: 30px;
 }
