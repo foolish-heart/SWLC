@@ -270,6 +270,7 @@ section.sobrenosotros article .container .col {
 /* Requisitos */
 /* Licencias nuevas */
 
+section.duplicado,
 section.renovacion,
 section.licenciasnuevas {
     flex: 2;
@@ -281,12 +282,14 @@ section.licenciasnuevas {
     color: #D7D7D7;
 }
 
+section.duplicado article,
 section.renovacion article,
 section.licenciasnuevas article {
     flex: 1;
     justify-content: center;
 }
 
+section.duplicado article .title2,
 section.renovacion article .title2,
 section.renovacion article .title,
 section.licenciasnuevas article .title {
@@ -298,12 +301,14 @@ section.licenciasnuevas article .title {
     border-radius: 50px;
 }
 
+section.duplicado article .dupl,
 section.renovacion article .renovaciona,
 section.renovacion article .renovacionp,
 section.licenciasnuevas article .M, .P, .A, .T {
     display: flex;
 }
 
+section.duplicado article .container,
 section.renovacion article .container,
 section.licenciasnuevas article .container {
     display: flex;
@@ -323,6 +328,7 @@ section.licenciasnuevas article .container h2 {
     text-align: center;
 }
 
+section.duplicado article .container li,
 section.renovacion article .container li,
 section.licenciasnuevas article .container li {
     line-height: 20px;
@@ -368,7 +374,8 @@ section.renovacion article .container {
 }
 
 section.renovacion article .container li {
-    margin-top: 30px;
+    margin-top: 35px;
+    align-items: center;
 }
 
 section.renovacion article .renovacionp .container p {
@@ -377,7 +384,7 @@ section.renovacion article .renovacionp .container p {
 }
 
 section.renovacion article .details .price {
-    height: 200px;
+    height: 203px;
     background: #6797b1;
     color: #273F4F;
 }
@@ -388,6 +395,23 @@ section.renovacion article .title2 {
 
 section.renovacion article .renovaciona .details .price {
     height: 180px;
+    font-size: 30px;
+    line-height: 20px;
 }
 
 /* Duplicado */
+
+section.duplicado article .title2 {
+    margin-top: 0px;
+}
+
+section.duplicado article .dupl .container li{
+    margin-top: 55px;
+}
+
+
+section.duplicado article .dupl .details .price {
+    height: 200;
+    font-size: 23px;
+    width: 40vw;
+}
