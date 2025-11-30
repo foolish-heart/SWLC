@@ -4,7 +4,7 @@
     <head>
         <title>Inicio de Sesión | SWLC</title>
         <link rel="stylesheet" href="css/login.css">
-        <script type="module" src="scripts/firebaseauth.js"></script>
+        <script type="module" src="scripts/firebaseauth-l.js"></script>
     </head>
 
     <style>
@@ -23,12 +23,12 @@
                     <div id="login-message" class="messageDiv" style="display:none;"></div>
 
                     <div class="input-group">
-                        <input type="email" id="email" class="input-field" placeholder="" required>
+                        <input type="email" id="Email" class="input-field" placeholder="" required>
                         <label for="email" class="floating-label">Dirección de correo electrónico</label>
                     </div>
                         
                     <div class="input-group">
-                        <input type="password" id="password" class="input-field" placeholder="" required>
+                        <input type="password" id="Password" class="input-field" placeholder="" required>
                         <label for="password" class="floating-label">Contraseña</label>
 
                         <div class="eye-icon" onclick="togglePassword()">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                         
-                    <button type="submit" id="login-button" class="form-btn form-btn--submit">Iniciar Sesión</button>
+                    <button type="submit" id="loginbutton" class="form-btn form-btn--submit">Iniciar Sesión</button>
                 </form>
 
                 <div class="form-divider"></div>
@@ -50,7 +50,7 @@
         <script>
 
             function togglePassword() {
-                const passwordInput = document.getElementById("password")
+                const passwordInput = document.getElementById("Password")
                 const eyeIcon = document.querySelector(".eye-icon")
 
                 if (passwordInput.type == "password") {
