@@ -62,7 +62,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-#password {
+#Password {
     padding-right: 40px;
 }
 
@@ -182,4 +182,15 @@ body {
     .form-container {
         padding: 60px 30px;
     }
+}
+
+.messageDiv {
+    background-color: #6797b1;
+    color: #273F4F;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeOut 7s forwards;
 }

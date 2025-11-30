@@ -4,8 +4,7 @@
     <head>
         <title>Inicio de Sesión | SWLC</title>
         <link rel="stylesheet" href="css/login.css">
-        <!-- <script type="module" src="scripts/forms.js"></script> -->
-        <!-- <script type="module" src="scripts/auth.js"></script> -->
+        <script type="module" src="scripts/firebaseauth.js"></script>
     </head>
 
     <style>
@@ -21,32 +20,41 @@
                 </div>
 
                 <form id="signup-form" class="form-box">
+                    <div id="resgister-message" class="messageDiv" style="display:none;"></div>
+
                     <div class="input-group">
-                        <input type="email" id="email" class="input-field" placeholder="" required>
-                        <label for="email" class="floating-label">Dirección de correo electrónico</label>
+                        <input type="text" id="Name" class="input-field" placeholder="" required>
+                        <label for="Name" class="floating-label">Nombres</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="Apellidos" class="input-field" placeholder="" required>
+                        <label for="Apellidos" class="floating-label">Apellidos</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="Email" class="input-field" placeholder="" required>
+                        <label for="Email" class="floating-label">Dirección de correo electrónico</label>
                     </div>
                         
                     <div class="input-group">
-                        <input type="password" id="password" class="input-field" placeholder="" required>
-                        <label for="password" class="floating-label">Contraseña</label>
+                        <input type="password" id="Password" class="input-field" placeholder="" required>
+                        <label for="Password" class="floating-label">Contraseña</label>
 
                         <div class="eye-icon" onclick="togglePassword()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
                         </div>
                     </div>
                         
-                    <button type="submit" id="signup-button" class="form-btn form-btn--submit">Registrarse</button>
+                    <button id="signupbutton" class="form-btn form-btn--submit">Registrarse</button>
                 </form>
             </div>
         </div>
 
-        <script type="module" src="auth.js"></script>
-        <script type="module" src="forms.js"></script>
-
         <script>
 
             function togglePassword() {
-                const passwordInput = document.getElementById("password")
+                const passwordInput = document.getElementById("Password")
                 const eyeIcon = document.querySelector(".eye-icon")
 
                 if (passwordInput.type == "password") {

@@ -4,8 +4,7 @@
     <head>
         <title>Inicio de Sesión | SWLC</title>
         <link rel="stylesheet" href="css/login.css">
-        <!-- <script type="module" src="scripts/forms.js"></script> -->
-        <!-- <script type="module" src="scripts/auth.js"></script> -->
+        <script type="module" src="scripts/firebaseauth.js"></script>
     </head>
 
     <style>
@@ -21,6 +20,8 @@
                 </div>
 
                 <form id="login-form" class="form-box">
+                    <div id="login-message" class="messageDiv" style="display:none;"></div>
+
                     <div class="input-group">
                         <input type="email" id="email" class="input-field" placeholder="" required>
                         <label for="email" class="floating-label">Dirección de correo electrónico</label>
@@ -45,9 +46,6 @@
                 </div>
             </div>
         </div>
-
-        <script type="module" src="auth.js"></script>
-        <script type="module" src="forms.js"></script>
 
         <script>
 
