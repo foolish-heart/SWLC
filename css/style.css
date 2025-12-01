@@ -93,10 +93,27 @@ nav ul li a {
     font-family: 'Montserrat', sans-serif;
     transition: background-color .3s ease;
     border: none;
+    top: 30px;
 }
 
 .login:hover {
     background-color: #ff8e62;
+}
+
+/* Logo de cuenta */
+
+.user-icon {
+    cursor: pointer;
+    color: #FE7743;
+    transition: 0.2s ease;
+    top: 30px;
+    right: 50px;
+    padding: 10px 20px;
+    position: absolute;
+}
+
+.user-icon:hover {
+    color: #ff8e62;
 }
 
 /* Main */
@@ -123,8 +140,15 @@ section.main article .title {
     margin-top: 130px;
 }
 
+section.main article .title h1 {
+    font-size: 100px;
+}
+
 section.main article .description {
-    margin: 40px;
+    margin: 35px;
+}
+section.main article .description {
+    margin: 20px;
 }
 
 section.main article .buttons {

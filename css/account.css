@@ -1,0 +1,41 @@
+.container {
+    background-color: #6797b1;
+    margin-top: 100px;
+    border-radius: 50px;
+    width: 70vw;
+    border-right: #273f4f4f solid 1px;
+}
+
+.container2 {
+    background-color: #6797b1;
+    margin-top: 100px;
+    border-radius: 50px;
+    width: 30vw;
+}
+
+.tittle {
+    background-color: #FE7743;
+    color: #fff;
+    border-radius: 50px;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.title2 {
+    background-color: #273F4F;
+    color: #ffff;
+    border-radius: 50px;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    padding: 0px 40px;
+
+}
+
+.info {
+    font-family: 'Montserrat', sans-serif;
+}

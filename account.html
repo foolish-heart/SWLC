@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
+
     <head>
-        <title>Perfil | SWLC</title>
+        <title>Cuenta | SWLC</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     </head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    </style>
+
+    <script type="module" src="scripts/account.js"></script>
+
     <body>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
 
-        <ul>
-            <li><a href="#informacion">Información</a></li>
-            <li><a href="#tramites">Trámites</a></li>
-            <li><a href="#sobrenosotros">Sobre nosotros</a></li>
-
-            <button type="login">Iniciar Sesión</button>
-        </ul>
+                <button class="login" id="logout">Cerrar Sesión</button>
+                <!-- <li id="authContainer"></li> -->
+                <!-- <button onclick="window.location.href='login.html'" class="login">Iniciar Sesión</button> -->
+            </ul>
+        </nav>
 
         <section>
-            <article>
-                <div>
-                    <h2>Información de Usuario</h1>
+            <article class="container">
+                <div class="tittle">
+                    <h1>Configuración de Cuenta</h1>
+                </div>
 
-                    <form for="Nombre">
+                <div class="text">
+                    <p>Nombres: <span class="info" id="loggedUserNames"></span></p>
+                </div>
+                <div class="text">
+                    <p>Apellidos: <span class="info" id="loggedUserApellidos"></span></p>
+                </div>
+                <div class="text">
+                    <p>Email: <span class="info" id="loggedUserEmail"></span></p>
+                </div>
 
-                        <label for="nombre">Nombres</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                        
-                        <label for="mail">mail@gmail.com</label>
-                        <input type="text" id="mail" name="mail" required>
+                
 
-                        <label for="fec_nac">10/10/2000</label>
-                        <input type="date" id="fec_nac" name="fec_nac" required>
+            </article>
 
-                        <label for="genero">Hombre</label>
-                        <input type="text" id="gen" name="gen" required>
-                        
-                    </form>
+            <article class="container2">
+                <div class="title2">
+                    <h1>Historial</h1>
                 </div>
             </article>
-  
-            <div>
-                <img src="img/usericon.png" width="150"/>
-            </div>
-
-            <button type="changepp">Cambiar foto de perfil</button>
 
         </section>
-
-        <section>
-            <article>
-                <div>
-                    <h2>Historial de trámites</h2>
-
-
-                </div>
-            </article>
-
+        
     </body>
 </html>

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -12,6 +12,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
 function showMessage(message, divId) {
     var messageDiv = document.getElementById(divId);
@@ -51,4 +52,27 @@ signIn.addEventListener('click', (event) => {
             alert("La cuenta no existe")
         }
     })
+});
+
+const adminEmail = 'admin@gmail.com';
+const loginForm = document.getElementById("login-form")
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById('Email').value;
+    const password = document.getElementById('Password').value;
+    
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+
+        if (user.email === adminEmail) {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+    })
+
+    .catch((error) => {
+        alert(error.message);
+    });
 });
