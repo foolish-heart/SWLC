@@ -14,17 +14,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-function showMessage(message, divId) {
-    var messageDiv = document.getElementById(divId);
-    if (messageDiv) {
-        messageDiv.style.display = "block";
-        messageDiv.innerHTML = message;
-        messageDiv.style.opacity = 1;
-        setTimeout(function() {
-            messageDiv.style.opacity = 0;
-        },5000);
-    } else {}
-}
+// function showMessage(message, divId) {
+//     var messageDiv = document.getElementById(divId);
+//     if (messageDiv) {
+//         messageDiv.style.display = "block";
+//         messageDiv.innerHTML = message;
+//         messageDiv.style.opacity = 1;
+//         setTimeout(function() {
+//             messageDiv.style.opacity = 0;
+//         },5000);
+//     } else {}
+// }
+
+const adminEmail = 'admin@gmail.com';
+const loginForm = document.getElementById("login-form")
 
 const signIn = document.getElementById('loginbutton');
 signIn.addEventListener('click', (event) => {
@@ -35,11 +38,17 @@ signIn.addEventListener('click', (event) => {
 
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-        //showMessage('Inicio de sesión realizado satisfactoriamente', 'login-message');
-        alert("Inicio de sesión realizado satisfactoriamente");
         const user = userCredential.user;
+        //showMessage('Inicio de sesión realizado satisfactoriamente', 'login-message');
+
+        if (user.email.trim().toLowerCase() === adminEmail) {
+            window.location.href = 'admin.html';
+        } else {
+            window.location.href = 'index.html';
+        }
+
+        alert("Inicio de sesión realizado satisfactoriamente");
         localStorage.setItem('loggedInUserId', user.uid);
-        window.location.href = 'index.html';
     })
 
     .catch((error) => {
@@ -52,27 +61,4 @@ signIn.addEventListener('click', (event) => {
             alert("La cuenta no existe")
         }
     })
-});
-
-const adminEmail = 'admin@gmail.com';
-const loginForm = document.getElementById("login-form")
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.getElementById('Email').value;
-    const password = document.getElementById('Password').value;
-    
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-
-        if (user.email === adminEmail) {
-            window.location.href = 'admin.html';
-        } else {
-            window.location.href = 'index.html';
-        }
-    })
-
-    .catch((error) => {
-        alert(error.message);
-    });
 });

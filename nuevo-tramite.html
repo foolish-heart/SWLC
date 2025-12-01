@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <tittle>Nuevo trámite | SWLC</tittle>
-        <link rel="stylesheet" href="css/style.css">
+        <title>Nuevo trámite | SWLC</title>
+        <link rel="stylesheet" href="css/tramites.css">
     </head>
 
     <style>
@@ -10,29 +10,88 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
     </style>
 
+    <script type="module" src="scripts/nuevoTramite.js"></script>
+    <script type="module" src="scripts/account.js"></script>
+
     <body>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="requisitos.html">Requisitos</a></li>
             </ul>
         </nav>
 
-        <section>
-            <div class="container-left">
-                <div class="tittle">Datos</div>
-
-                <div class="text">
-                    <p>Por favor verifique los datos: </p>
-                </div>
-
-                <div class="data">
-                    <label for="text" class="label">Nombres</label>
-                    <input type="password" id="nombres" class="input-field" placeholder="" required>
-                </div>
-
+        <section id="numero-tramite">
+            <div class="containerTramite">
+                <span>Número de trámite:</span>
+                <span class ="num" id="numTramite"></span>
             </div>
         </section>
+
+        <article>
+            <section id="datos-usuario">
+                <div class="containerDatos">
+                    <div class="tittle">
+                        <h1>Datos</h1>
+                    </div>
+                        
+                    <div class="text">
+                        <h3>Por favor verifique los datos: </h3>
+                        <p>Nombres: <span class="info" id="loggedUserNames"></span></p>
+                        <p>Apellidos: <span class="info" id="loggedUserApellidos"></span></p>
+                        <p>Email: <span class="info" id="loggedUserEmail"></span></p>
+                    </div>
+                </div>
+            </section>
+        
+            <section id="camara">
+                <div class="containerCamara">
+                    <div class="tittle">
+                        <h1>Fotografía</h1>
+                    </div>
+                
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas" style="display:none;"></canvas>
+                
+                    <br>
+                
+                    <button class="button" id="btnIniciarCamara">Iniciar cámara</button> <button class="button" id="tomarFoto">Tomar foto</button>
+                    
+                
+                    <div>
+                        <h3>Foto guardada: </h3>
+                        <img id="foto" class="foto"/>
+                    </div>
+                </div>
+            </section>
+        
+            <section id="subir-foto">
+                <div class="tittle">
+                    <h2>Subir fotografia</h2>
+                </div>
+                <div>
+                    <input type="file" id="inputArchivo" accept="image/*">
+                </div>
+            </section>
+        
+            <section id="tipo-tramite">
+                <div class="tittle">
+                    <h2>Tipo de Trámite</h2>
+                </div>
+            
+                <div class="">
+                    <select id="select" class="select">
+                        <option value="" disabled selected>Seleccione un trámite</option>
+                        <option value="nuevaLicencia">Nueva Licencia</option>
+                        <option value="renovacion">Renovación</option>
+                        <option value="renovacionAscenso">Renovación y ascenso</option>
+                        <option value="duplicado">Duplicado</option>
+                    </select>
+                </div>
+            
+            </section>
+        </article>
+
+        <div id="btnSiguiente" class="button">Siguiente</div>
 
     </body>
 </html>
