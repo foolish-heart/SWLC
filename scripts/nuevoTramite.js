@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 import { getFirestore, getDoc, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-storage.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB4I99PME3SWxEl_qYPkBL7TAmeY02bHSw",
@@ -19,7 +19,7 @@ const storage = getStorage(app);
 
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
-const btnCamara = document.getElementById("btnIniciarCamara");
+const btnCamara = document.getElementById("btnCamara");
 const btnFoto = document.getElementById("tomarFoto");
 const img = document.getElementById("foto");
 const inputArchivo = document.getElementById("inputArchivo");
@@ -27,15 +27,14 @@ const inputArchivo = document.getElementById("inputArchivo");
 const selectTramite = document.getElementById("select");
 const btnSiguiente = document.getElementById("btnSiguiente");
 
+const numTramiteSpan = document.getElementById("numTramite");
+
 function generarNumeroTramite() {
     return "TRAM-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
 }
 
-const numTramite = generarNumeroTramite();
-document.getElementById("numTramite").textContent = numTramite;
-
 let numTramiteGlobal = generarNumeroTramite();
-tramiteSpan.textContent = numTramiteGlobal;
+numTramiteSpan.textContent = numTramiteGlobal;
 
 onAuthStateChanged(auth, (user) => {
     const loggedInUserId = localStorage.getItem('loggedInUserId');
@@ -62,8 +61,14 @@ onAuthStateChanged(auth, (user) => {
 })
 
 btnCamara.addEventListener("click", async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    video.srcObject = stream;
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+
+    } catch (err) {
+        console.error(err);
+        alert("No se pudo acceder a la cámara: " + err);
+    }
 });
 
 btnFoto.addEventListener("click", () => {
@@ -74,14 +79,39 @@ btnFoto.addEventListener("click", () => {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const dataURL = canvas.toDataURL("image/png");
-    imgCapturada.src = dataURL;
+    img.src = dataURL;
+
+    video.style.display = "none";
+    img.style.display = "block";
 });
+
+const nombreSpan = document.getElementById("loggedUserNames");
+const apellidoSpan = document.getElementById("loggedUserApellidos");
+const emailSpan = document.getElementById("loggedUserEmail");
 
 btnSiguiente.addEventListener("click", async () => {
     const user = auth.currentUser;
-    if (!user) {
+    if (!user) return;
+    
+    const tipoTramite = selectTramite.value;
+    if (!tipoTramite) {
         alert("Seleccione un tipo de trámite antes de continuar.");
         return;
+    }
+
+    
+    let fotoBlob = null;
+    if (img.src) {
+        const response = await fetch(img.src);
+        fotoBlob = await response.blob();
+    }
+
+    let fotoURL = null;
+    if (fotoBlob) {
+        const fotoRef = ref(storage, `tramites/${user.uid}/${numTramiteGlobal}/foto.png`);
+        console.log("Subiendo a:", `tramites/${user.uid}/${numTramiteGlobal}/foto.png`);
+        const snapshot = await uploadBytes(fotoRef, fotoBlob);
+        fotoURL = await getDownloadURL(snapshot.ref);
     }
 
     await setDoc(doc(db, "tramites", numTramiteGlobal), {
@@ -89,11 +119,14 @@ btnSiguiente.addEventListener("click", async () => {
         nombres: nombreSpan.textContent,
         apellidos: apellidoSpan.textContent,
         email: emailSpan.textContent,
-        tipoTramite: tipo,
-        fotoBase64: imgCapturada.src || null,
-        fecha: new Date().toISOString()
+        tipoTramite: tipoTramite,
+        fotoURL: fotoURL,
+        numeroTramite: numTramiteGlobal,
+        fecha: new Date().toISOString(),
+        estado: "pendiente",
     });
 
-    alert("Datos guardados satisfactoriamente.");
-    window.location.href = "nuevo-tramite2.html";
+    localStorage.setItem("tramiteActual", numTramiteGlobal);
+
+    window.location.href = "nuevoTram.html";
 });

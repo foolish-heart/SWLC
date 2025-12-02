@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Nuevo trámite | SWLC</title>
+        <link rel="stylesheet" href="css/tramites2.css">
+    </head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    </style>
+
+    <script type="module" src="scripts/nuevoTram.js"></script>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+            </ul>
+        </nav>
+
+        <div class="tittle">
+            <h1>Continuación de trámite</h1>
+        </div>
+
+        <section id="numero-tramite">
+            <div class="containerTramite">
+                <span>Número de trámite:</span> <span class ="num" id="numTramite"></span>
+            </div>
+        </section>
+
+        <section id="numero-tramite">
+            <div class="containerTramite2">
+                <span>Tipo de Trámite: </span> <span id="tipoTramiteTexto"> </span></p>
+            </div>
+        </section>
+
+        <article>
+            <h2>Seleccione la categoría de licencia</h2>
+
+            <select id="categoriaSelect">
+                <option value="" disabled selected>Seleccione categoría</option>
+                <option value="M">M</option>
+                <option value="P">P</option>
+                <option value="A">A</option>
+                <option value="T">T</option>
+            </select>
+
+            <div id="infoCategoria"></div>
+
+            <h2>Requisitos</h2>
+
+            <div id="checkboxExtra" style="display:none;">
+                <label>
+                    <input type="checkbox" id="requiereHabilidadesExtra">
+                    Han pasado más de 5 años desde mi última renovación (agregar requisito extra)
+                </label>
+            </div>
+
+            <div id="requisitosContainer"></div>
+
+            <button id="btnFinalizar">Subir documentos y finalizar</button>
+        </article>
+    </body>
+</html>
