@@ -36,30 +36,40 @@
         </section>
 
         <article>
-            <h2>Seleccione la categoría de licencia</h2>
+            <div class="selector">
+                <h2>Seleccione la categoría de licencia</h2>
 
-            <select id="categoriaSelect">
-                <option value="" disabled selected>Seleccione categoría</option>
-                <option value="M">M</option>
-                <option value="P">P</option>
-                <option value="A">A</option>
-                <option value="T">T</option>
-            </select>
+                <select class="selector" id="categoriaSelect">
+                    <option value="" disabled selected>Seleccione categoría</option>
+                    <option value="M">M</option>
+                    <option value="P">P</option>
+                    <option value="A">A</option>
+                    <option value="T">T</option>
+                </select>
+            </div>
 
-            <div id="infoCategoria"></div>
+            <div class="QR">
+                <h2 class="tittle">Pago de trámite</h2>
+                <img src="img/qr.jpg">
+                <div id="infoCategoria"></div>
+            </div>
 
-            <h2>Requisitos</h2>
+        </article>
 
-            <div id="checkboxExtra" style="display:none;">
+        <article class="container">  
+            <h2 class="tittle2">Requisitos</h2>
+
+            <div class ="info" id="checkboxExtra" style="display:none;">
                 <label>
                     <input type="checkbox" id="requiereHabilidadesExtra">
                     Han pasado más de 5 años desde mi última renovación (agregar requisito extra)
                 </label>
             </div>
 
-            <div id="requisitosContainer"></div>
-
-            <button id="btnFinalizar">Subir documentos y finalizar</button>
+            <div class="info" id="requisitosContainer"></div>
         </article>
+
+        <button class ="button" id="btnFinalizar">Subir documentos y finalizar</button>
+
     </body>
 </html>
