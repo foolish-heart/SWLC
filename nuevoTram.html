@@ -50,8 +50,16 @@
 
             <div class="QR">
                 <h2 class="tittle">Pago de trámite</h2>
-                <img src="img/qr.jpg">
-                <div id="infoCategoria"></div>
+
+                <div class="QRholder">
+                    <img src="img/qr.jpg"> 
+                    
+                    <div class="comprobante">
+                        <p>Costo: <span id="costoTramite">-</span> Bs</p>
+                        <p>Cargue su comprobante de pago</p>
+                        <input type="file" id="comprobantePago" accept="image/*,application/pdf">
+                    </div>
+                </div>
             </div>
 
         </article>

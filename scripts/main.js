@@ -47,7 +47,7 @@ function activarBotones() {
     };
 
     btnTramites1.onclick = () => {
-        window.location.href = "nuevo-tramite.html"; 
+        window.location.href = "verificarTram.html"; 
     };
 }
 

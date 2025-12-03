@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <title>Cuenta | SWLC</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="css/verificar.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    </head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    </style>
+
+    <script type="module" src="scripts/veriificar.js"></script>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+
+                <li id="authContainer"></li>
+                <!-- <button class="login" id="logout">Cerrar Sesión</button> -->
+            </ul>
+        </nav>
+
+        <section>
+            <article class="container">
+                <div class="tittle">
+                    <h1>Verificar estado de trámite</h1>
+                </div>
+
+                <div class="selector">
+                    <select id="tramiteSelect">
+                        <option value="">Seleccione un trámite</option>
+                    </select>
+                
+                    <button id="verificarBtn">Verificar</button>
+                
+                    <p id="mensaje"></p>
+                </div>
+            </article>
+        </section>
+
+        <script type="module" src="scripts/main.js"></script>
+        
+    </body>
+</html>

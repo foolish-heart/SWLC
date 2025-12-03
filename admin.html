@@ -5,7 +5,7 @@
         <title>Administrador | SWLC</title>
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/style.css">
-        <script type="module" src="scripts/admin.js"></script>
+        <link rel="stylesheet" href="css/admin.css">
     </head>
 
     <style>
@@ -16,38 +16,52 @@
     <script type="module" src="scripts/account.js"></script>
 
     <body>
-            <nav>
-                <ul>
-                    <button class="login" id="logout">Cerrar Sesión</button>
-                    <!-- <li id="authContainer"></li> -->
-                    <!-- <button onclick="window.location.href='login.html'" class="login">Iniciar Sesión</button> -->
-                </ul>
-            </nav>
+        <nav>
+            <ul>
+                <button class="login" id="logout">Cerrar Sesión</button>
+                <!-- <li id="authContainer"></li> -->
+                <!-- <button onclick="window.location.href='login.html'" class="login">Iniciar Sesión</button> -->
+            </ul>
+        </nav>
 
         <section>
-            <article class="container">
+            <article class="tableContainer">
                 <div class="tittle">
                     <h1>Página de administrador</h1>
-                    <h3>Usuarios registrados</h3>
+                    <h3>Tramites registrados</h3>
                 </div>
 
-                <table id="userTable">
+                <div class="search">
+                    <input class="search" type="text" id="searchInput" placeholder="Busqueda">
+                    
+                    <select id="estadoFiltro" style="padding: 8px; font-size: 16px;">
+                        <option value="todos">Todos</option>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="aprobado">Aprobado</option>
+                        <option value="denegado">Denegado</option>
+                    </select>
+                </div>
+
+
+                <table>
                     <thead>
                         <tr>
-                            <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Email</th>
+                            <th>N° Trámite</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Estado</th>
                             <th>Archivos</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
+
+                    <tbody id="tramiteList"></tbody>
+
                 </table>
-
-                <tbody id="userlist">
-                    
-                </tbody>
-
             </article>
         </section>
+
+        <script type="module" src="scripts/admin.js"></script>
+
     </body>
 </html>

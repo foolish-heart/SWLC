@@ -33,23 +33,49 @@
                 </div>
 
                 <div class="text">
-                    <p>Nombres: <span class="info" id="loggedUserNames"></span></p>
-                </div>
-                <div class="text">
-                    <p>Apellidos: <span class="info" id="loggedUserApellidos"></span></p>
-                </div>
-                <div class="text">
-                    <p>Email: <span class="info" id="loggedUserEmail"></span></p>
-                </div>
+                    <p>Nombres:
+                        <span id="loggedUserNames"></span>
+                        <input type="text" id="editNombres" style="display:none;">
+                    </p>
 
+                    <p>Apellidos:
+                        <span id="loggedUserApellidos"></span>
+                        <input type="text" id="editApellidos" style="display:none;">
+                    </p>
+
+                    <p>Email:
+                        <span id="loggedUserEmail"></span>
+                        <input type="email" id="editEmail" style="display:none;" disabled>
+                    </p>
+                </div>
                 
-
+                <div class="buttons">
+                    <button id="btnEditar">Editar</button>
+                    <button id="btnGuardar" style="display:none">Guardar cambios</button>
+                    <button id="btnCancelar" style="display:none">Cancelar</button>
+                </div>
+                
             </article>
 
             <article class="container2">
                 <div class="title2">
                     <h1>Historial</h1>
                 </div>
+
+                <table id="tablaHistorial" border="1">
+                    <thead>
+                        <tr>
+                            <th>Número de trámite</th>
+                            <th>Tipo</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historialBody">
+        
+                    </tbody>
+                </table>
+
             </article>
 
         </section>

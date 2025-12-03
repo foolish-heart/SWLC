@@ -114,7 +114,7 @@ article {
 }
 
 .selector {
-    width: 33.3vw;
+    width: 40vw;
     background-color: #6797b1;
     border-radius: 50px;
 }
@@ -164,12 +164,16 @@ select {
 }
 
 .QR {
-    width: 30vw;
+    width: 59vw;
 }
 
-.QR .tittle{
+.QRholder {
+    display: flex;
+}
+
+.QR h2{
     margin-top: 0px;
-    width: 65.5vw;
+    width: 100%;
 }
 
 img {
@@ -189,4 +193,20 @@ img {
 
 .containerUpload:hover {
     background-color: #7ea7bd;
+}
+
+.comprobante {
+    background-color: #6797b1;
+    border-radius: 50px;
+    padding: 20px;
+    font-size: 25px;
+    width: 40vw;
+}
+
+input {
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background-color: #ff8e62;
+    padding-right: 5px;
 }

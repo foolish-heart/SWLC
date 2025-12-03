@@ -20,6 +20,13 @@ const storage = getStorage(app);
 const numTramite = localStorage.getItem("tramiteActual");
 document.getElementById("numTramite").textContent = numTramite;
 
+const costos = {
+    nuevaLicencia: { M: 80, P: 225, A: 225, T: 80 },
+    renovacion: { M: 80, P: 225, A: 225, T: 80 },
+    renovacionAscenso: { M: 80, P: 225, A: 225, T: 80 },
+    duplicado: { M: 80, P: 160, A: 160, T: 80 }
+};
+
 const nombresBonitos = {
     nuevaLicencia: "Nueva licencia",
     renovacion: "Renovación",
@@ -156,6 +163,7 @@ const checkboxExtra = document.getElementById("checkboxExtra");
 const requiereHabilidadesExtra = document.getElementById("requiereHabilidadesExtra");
 
 categoriaSelect.addEventListener("change", () => {
+
     if (!tipoTramite) return;
 
     requisitosContainer.innerHTML = "";
@@ -164,6 +172,9 @@ categoriaSelect.addEventListener("change", () => {
     const categoria = categoriaSelect.value;
 
     let lista = requisitos[tipoTramite][categoria];
+
+    const costo = costos[tipoTramite][categoria];
+    document.getElementById("costoTramite").textContent = costo;
 
     if (tipoTramite === "renovacion") {
         checkboxExtra.style.display = "block";
@@ -237,12 +248,18 @@ document.getElementById("btnFinalizar").addEventListener("click", async () => {
         uploads["extra_habilidades"] = url;
     }
 
+    const comprobanteInput = document.getElementById("comprobantePago");
+    if (!comprobanteInput.files[0]) {
+        return alert("Debe subir el comprobante de pago");
+    }
+
     const docRef = doc(db, "tramites", numTramite);
 
     await updateDoc(docRef, {
         categoria: categoria,
         documentos: uploads,
-        estado: "documentos_subidos"
+        estado: "documentos_subidos",
+        costo: costos[tipoTramite][categoria]
     });
 
     alert("Documentos subidos correctamente. Trámite completado.");
