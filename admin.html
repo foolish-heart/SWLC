@@ -13,8 +13,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
     </style>
 
-    <script type="module" src="scripts/account.js"></script>
-
     <body>
         <nav>
             <ul>
@@ -62,6 +60,17 @@
         </section>
 
         <script type="module" src="scripts/admin.js"></script>
+
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+           (function(){
+              emailjs.init({
+                publicKey: "mPy0BZR6sbpuJLbdX",
+              });
+           })();
+        </script>
 
     </body>
 </html>

@@ -168,6 +168,23 @@ body {
     background-color: #6797b1;
 }
 
+.form-socials {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.form-btn--social {
+
+    transition: .3s ease;
+}
+
+.form-btn--social:hover {
+    background-color: #D7D7D7;
+}
+
 .form-link {
     color: #6797b1;
     font-family: 'Montserrat', sans-serif;

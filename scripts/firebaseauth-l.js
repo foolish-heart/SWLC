@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB4I99PME3SWxEl_qYPkBL7TAmeY02bHSw",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore(app);
 
 // function showMessage(message, divId) {
 //     var messageDiv = document.getElementById(divId);
@@ -61,4 +63,41 @@ signIn.addEventListener('click', (event) => {
             alert("La cuenta no existe")
         }
     })
+});
+
+const googleBtn = document.getElementById("btnGoogle");
+const provider = new GoogleAuthProvider();
+
+googleBtn.addEventListener("click", () => {
+    signInWithPopup(auth, provider)
+    .then(async (result) => {
+
+        const user = result.user;
+        console.log("Usuario Google:", user);
+
+        localStorage.setItem("loggedInUserId", user.uid);
+
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (!docSnap.exists()) {
+            await setDoc(docRef, {
+                nombres: user.displayName?.split(" ")[0] || "",
+                apellidos: user.displayName?.split(" ").slice(1).join(" ") || "",
+                email: user.email,
+                creadoEn: new Date().toISOString()
+            });
+        }
+
+        // Si es admin → admin.html
+        if (user.email.toLowerCase() === "admin@gmail.com") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "index.html";
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error al iniciar sesión con Google");
+    });
 });

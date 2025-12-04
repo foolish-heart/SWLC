@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-import { getFirestore, getDocs, doc, collection, updateDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+import { getFirestore, getDocs, doc, collection, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB4I99PME3SWxEl_qYPkBL7TAmeY02bHSw",
@@ -104,14 +104,41 @@ function activarBotones() {
 
 async function actualizarEstado(id, estadoNuevo) {
     const tramiteRef = doc(db, "tramites", id);
+    const tramiteSnap = await getDoc(tramiteRef);
+
+    if (!tramiteSnap.exists()) {
+        alert("Error: El trámite no existe.");
+        return;
+    }
+
+    const data = tramiteSnap.data();
+
+    const userEmail = data.email;       
+    const userName = data.nombres + " " + data.apellidos; 
+    const tramiteID = data.numeroTramite;
+    const nuevoEstado = estadoNuevo;
 
     await updateDoc(tramiteRef, {
-        estado: estadoNuevo
+        estado: nuevoEstado
     });
 
-    alert(`Tramite marcado como: ${estadoNuevo}`);
+    emailjs.send("service_w8q1r4a", "template_5jekukm", {
+        to_email: userEmail,
+        user_name: userName,
+        tramite_id: tramiteID,
+        estado: nuevoEstado
+    })
+    .then(() => {
+        alert("Estado actualizado y correo enviado.");
+    })
+    .catch((err) => {
+        console.error(err);
+        alert("Estado actualizado, pero hubo un error enviando el correo.");
+    });
+
     cargarTramites();
 }
+
 
 document.getElementById("estadoFiltro").addEventListener("change", aplicarFiltros);
 document.getElementById("searchInput").addEventListener("input", aplicarFiltros);
@@ -134,3 +161,13 @@ function aplicarFiltros() {
 
     renderTabla(filtrados);
 }
+
+document.getElementById("logout").addEventListener("click", () => {
+    signOut(auth).then(() => {
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = "index.html";
+    }).catch((error) => {
+        console.error("Error al cerrar sesión", error);
+    });
+});
