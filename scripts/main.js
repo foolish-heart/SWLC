@@ -43,6 +43,14 @@ function mostrarIcon(user) {
 
 function activarBotones() {
     btnTramites.onclick = () => {
+        const advertencia1 = alert("Se le pedirá una ftografía al iniciar el trámite, puede tomar una desde el sitio o cargar una imagen.");
+
+        const advertencia2 = confirm("⚠️ Advertencia: Asegúrese de tener los requisitos listos en PDF.");
+
+        if (!advertencia2) {
+            return;
+        }
+
         window.location.href = "nuevo-tramite.html"; 
     };
 
